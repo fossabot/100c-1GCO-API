@@ -177,6 +177,65 @@ namespace ApiLaunchBusiness
         }
 
         //
+        // Comunicar documentos da transporte à AT
+        private void IAR_ComunicarAT()
+        {
+            if (mApi.my_api.AbreEmpresa == false)
+            {
+                fApi.DefInstance.EscreveMsg("Nenhuma empresa aberta");
+                return;
+            }
+            dynamic objDocumento = null;
+
+            try
+            {
+                string TipoDoc = String.Empty;
+                string Serie = String.Empty;
+                int Numdoc = 0;
+                int Ano = 0;
+
+                try
+                {
+                    objDocumento = null;
+
+                    TipoDoc = txtTpDoc.Text;
+                    Serie = txtSerie.Text;
+                    Numdoc = Convert.ToInt32(Double.Parse(txtNumero.Text));
+                    Ano = Convert.ToInt32(Double.Parse(txtAno.Text));
+
+                    objDocumento = System.Activator.CreateInstance(objType_DocumentoComercial);
+
+                    if (objDocumento.ComunicarDocumentoTransporteAT((short)Ano, TipoDoc, Serie, Numdoc))
+                    {
+                        //Ok
+                        fApi.DefInstance.EscreveMsg(objDocumento.UltimaMensagem());
+                    }
+                    else
+                    {
+                        //Erro
+                        fApi.DefInstance.EscreveMsg(objDocumento.UltimaMensagem());
+                    }
+                    Marshal.ReleaseComObject(objDocumento);
+                    objDocumento = null;
+                    return;
+                }
+                catch (System.Exception excep)
+                {
+                    fApi.DefInstance.EscreveMsg(excep.Message);
+                }
+            }
+            finally
+            {
+                if (objDocumento != null)
+                {
+                    // Destruir Objeto
+                    Marshal.ReleaseComObject(objDocumento);
+                }
+
+            }
+        }
+
+        //
         // Finaliza um documento preparado
         //
         private void IAR_Finalizar()
@@ -373,6 +432,9 @@ namespace ApiLaunchBusiness
                     objDocumento.cab.Terceiro = Text408.Text;
                     objDocumento.cab.DescontoCabecalho = Convert.ToDecimal(Text409.Text);
                     objDocumento.cab.RegimeIva = objDocumento.Terceiro.REGIVA;
+
+                    objDocumento.cab.datacarga = txtData.Text;
+                    objDocumento.cab.horacarga = DateTime.Now.AddHours(1).ToString("HH:mm"); 
 
                     objDocumento.cab.IVAIncluido = ((chkIvaIncluido.CheckState == CheckState.Checked) ? ((short)(-1)) : ((short)0));
 
@@ -1234,6 +1296,12 @@ namespace ApiLaunchBusiness
         private void txtData_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmdComunicarGuias_Click(object sender, EventArgs e)
+        {
+            // comunicar guias à AT
+            IAR_ComunicarAT();
         }
     }
 }

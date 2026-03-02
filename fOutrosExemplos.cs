@@ -483,7 +483,7 @@ namespace ApiLaunchBusiness
                             objDocumento.cab.TipoDocumento = "TAR"; 
                             objDocumento.cab.Serie = "2"; 
                             objDocumento.cab.NossoNoDocumento = 2; 
-                            objDocumento.cab.Ano = 2011; 
+                            objDocumento.cab.Ano = DateTime.Today.ToString("yyyy"); 
                             objDocumento.cab.Data = DateTime.Today.ToString("d"); 
                             objDocumento.cab.Sector = "ANS"; 
                             objDocumento.cab.Moeda = "EUR";

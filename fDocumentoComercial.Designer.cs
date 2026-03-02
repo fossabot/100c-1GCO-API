@@ -32,8 +32,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            combit.Reporting.DataProviders.DataSourceConnectionProperties dataSourceConnectionProperties1 = new combit.Reporting.DataProviders.DataSourceConnectionProperties();
             this.cmdLer = new System.Windows.Forms.Button();
             this.cmdIns = new System.Windows.Forms.Button();
             this.cmdDel = new System.Windows.Forms.Button();
@@ -157,9 +155,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtATCUD = new System.Windows.Forms.TextBox();
             this.cmdImprimir = new System.Windows.Forms.Button();
-            this.dataSource1 = new combit.Reporting.DataProviders.DataSource(this.components);
             this.txtDataVencimento = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.cmdComunicarGuias = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Frame_Main)).BeginInit();
             this.Frame_Main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._fAdicional_2)).BeginInit();
@@ -1749,7 +1747,7 @@
             this.cmdFinalizar.BackColor = System.Drawing.SystemColors.Control;
             this.cmdFinalizar.Cursor = System.Windows.Forms.Cursors.Default;
             this.cmdFinalizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cmdFinalizar.Location = new System.Drawing.Point(600, 48);
+            this.cmdFinalizar.Location = new System.Drawing.Point(514, 48);
             this.cmdFinalizar.Name = "cmdFinalizar";
             this.cmdFinalizar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cmdFinalizar.Size = new System.Drawing.Size(77, 25);
@@ -1898,15 +1896,6 @@
             this.cmdImprimir.UseVisualStyleBackColor = false;
             this.cmdImprimir.Click += new System.EventHandler(this.cmdImprimir_Click);
             // 
-            // dataSource1
-            // 
-            dataSourceConnectionProperties1.ConnectionString = null;
-            dataSourceConnectionProperties1.SourceType = combit.Reporting.DataProviders.DataSourceType.OleDb;
-            this.dataSource1.ConnectionProperties = dataSourceConnectionProperties1;
-            this.dataSource1.IdentifierDelimiterFormat = "[{0}]";
-            this.dataSource1.SupportedElementTypes = ((combit.Reporting.DataProviders.DbConnectionElementTypes)((combit.Reporting.DataProviders.DbConnectionElementTypes.Table | combit.Reporting.DataProviders.DbConnectionElementTypes.View)));
-            this.dataSource1.SupportsAdvancedFiltering = false;
-            // 
             // txtDataVencimento
             // 
             this.txtDataVencimento.Location = new System.Drawing.Point(142, 285);
@@ -1924,11 +1913,27 @@
             this.label6.TabIndex = 300;
             this.label6.Text = "Data Vencimento";
             // 
+            // cmdComunicarGuias
+            // 
+            this.cmdComunicarGuias.BackColor = System.Drawing.SystemColors.Control;
+            this.cmdComunicarGuias.Cursor = System.Windows.Forms.Cursors.Default;
+            this.cmdComunicarGuias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cmdComunicarGuias.Location = new System.Drawing.Point(600, 48);
+            this.cmdComunicarGuias.Name = "cmdComunicarGuias";
+            this.cmdComunicarGuias.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cmdComunicarGuias.Size = new System.Drawing.Size(113, 25);
+            this.cmdComunicarGuias.TabIndex = 301;
+            this.cmdComunicarGuias.Text = "Comunicar Guias";
+            this.cmdComunicarGuias.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.cmdComunicarGuias.UseVisualStyleBackColor = false;
+            this.cmdComunicarGuias.Click += new System.EventHandler(this.cmdComunicarGuias_Click);
+            // 
             // fDocumentoComercial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 671);
+            this.Controls.Add(this.cmdComunicarGuias);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtDataVencimento);
             this.Controls.Add(this.cmdImprimir);
@@ -2118,8 +2123,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtQRCodeText;
-        private combit.Reporting.DataProviders.DataSource dataSource1;
         private System.Windows.Forms.TextBox txtDataVencimento;
         private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Button cmdComunicarGuias;
     }
 }
