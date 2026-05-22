@@ -441,7 +441,7 @@ namespace ApiLaunchBusiness
                     objDocumento.cab.TipoPreco = (short)cmbTipoPrecoStock.SelectedIndex;
 
                     // Tipo de Sujeito Passivo de Iva
-                    objDocumento.cab.SujeitoPassivo_Simplifica = 1;
+                    //objDocumento.cab.SujeitoPassivo_Simplifica = 1;
 
                     objDocumento.cab.DataVencimento = txtDataVencimento.Text;
 
